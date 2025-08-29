@@ -12,17 +12,24 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tests
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
 
     steps:
       # Step 1: Check out the code from the repository
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Step 2: Setup Python environment
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{matrix.python-version}}
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -32,4 +39,4 @@ jobs:
 
       # Step 4: Run tests
       - name: Run tests
-        run: pytest
+        run: pytest test_operations.py
