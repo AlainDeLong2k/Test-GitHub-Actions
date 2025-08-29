@@ -2,6 +2,16 @@ name: Python CI
 
 # Trigger the workflow on any push to the main branch or pull request
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment deploy"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
   push:
     branches:
       - main
