@@ -1,0 +1,11 @@
+name: Basic Workflow Dispatch Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run: echo "We did the thing!"
