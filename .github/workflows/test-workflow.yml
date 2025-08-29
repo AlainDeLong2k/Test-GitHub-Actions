@@ -1,0 +1,26 @@
+name: Test Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+  push:
+    branches:
+      - feature
+
+jobs:
+  manual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "We run manual test!"
+          echo "Selected environment: ${{github.event.inputs.environment}}"
