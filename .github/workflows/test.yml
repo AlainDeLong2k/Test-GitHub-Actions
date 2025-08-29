@@ -1,0 +1,27 @@
+name: Test workflow_dispatch
+
+on:
+  workflow_dispatch: # Bật trigger manual
+    inputs:
+      environment:
+        description: "Select environment to deploy"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+      model_version:
+        description: "Version of ML model"
+        required: false
+        default: "v1"
+        type: string
+
+jobs:
+  run-manual-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "Selected environment: ${{ github.event.inputs.environment }}"
+          echo "Model version: ${{ github.event.inputs.model_version }}"
