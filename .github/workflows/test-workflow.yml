@@ -12,6 +12,10 @@ on:
           - staging
           - production
 
+  push:
+    branches:
+      - feature
+
 jobs:
   manual-test:
     runs-on: ubuntu-latest
