@@ -25,3 +25,4 @@ jobs:
         run: |
           echo "We run manual test!"
           echo "Selected environment: ${{github.event.inputs.environment}}"
+          echo "Version: ${{github.event.inputs.version}}"
