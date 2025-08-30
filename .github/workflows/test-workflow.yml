@@ -1,4 +1,4 @@
-name: Test Pipeline
+name: Deploy Pipeline
 
 on:
   workflow_dispatch:
@@ -11,10 +11,11 @@ on:
         options:
           - staging
           - production
-
-  push:
-    branches:
-      - feature
+      version:
+        description: "Version of package"
+        required: false
+        default: "v1"
+        type: string
 
 jobs:
   manual-test:
@@ -24,3 +25,4 @@ jobs:
         run: |
           echo "We run manual test!"
           echo "Selected environment: ${{github.event.inputs.environment}}"
+          echo "Version: ${{github.event.inputs.version}}"
