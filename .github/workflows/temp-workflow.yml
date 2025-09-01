@@ -11,11 +11,6 @@ on:
         options:
           - staging
           - production
-      version:
-        description: "Version of package"
-        required: false
-        default: "v1"
-        type: string
 
 jobs:
   deploy:
